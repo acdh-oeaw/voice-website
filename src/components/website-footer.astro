@@ -1,0 +1,115 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Link from "@/components/link.astro";
+import type { Locale } from "@/config/i18n.config";
+import { createI18n } from "@/lib/i18n";
+import { withBasePath } from "@/lib/with-base-path";
+
+const { t } = await createI18n(Astro.currentLocale as Locale | undefined);
+
+const imprint = t("WebsiteFooter.links.imprint");
+---
+
+<footer class="border-t border-t-neutral-separator bg-white">
+	<div class="mx-auto grid w-full max-w-screen-lg gap-y-6 px-4 py-12 text-neutral-text">
+		<div class="flex w-full items-center gap-x-1.5 border-b border-neutral-separator pb-4">
+			<Icon aria-hidden="true" class="size-4.5" name="lucide:message-circle" />
+			<span class="text-sm font-medium">{t("WebsiteFooter.contact")}</span>
+		</div>
+
+		<div
+			class="grid grid-cols-[auto_1fr] items-start gap-x-8 gap-y-6 md:grid-cols-[auto_1fr_auto_1fr]"
+		>
+			<div>
+				<a class="inline-flex py-1" href="https://www.oeaw.ac.at/acdh/">
+					<img
+						alt=""
+						class="size-16"
+						loading="lazy"
+						src={withBasePath("/assets/images/acdh-ch-logo-light.svg")}
+					/>
+					<span class="sr-only">ACDH-CH</span>
+				</a>
+			</div>
+			<div class="grid gap-y-2">
+				<div class="font-medium">ACDH-CH</div>
+				<div>
+					Austrian Centre for Digital Humanities and Cultural Heritage
+					<br />
+					Austrian Academy of Sciences
+				</div>
+				<div>
+					<div>Bäckerstraße 13, 1010 Wien</div>
+				</div>
+				<div>
+					<div>
+						T:
+						<a
+							class="underline decoration-dotted underline-offset-4 hover:no-underline"
+							href="tel:+43 1 51581-2200"
+						>
+							+43 1 51581-2200
+						</a>
+					</div>
+					<div>
+						E:
+						<a
+							class="underline decoration-dotted underline-offset-4 hover:no-underline"
+							href="mailto:acdh-ch@oeaw.ac.at"
+						>
+							acdh-ch@oeaw.ac.at
+						</a>
+					</div>
+				</div>
+				<div class="mt-2 font-medium">{t("WebsiteFooter.contact")} VOICE</div>
+				<div>
+					<a
+						class="underline decoration-dotted underline-offset-4 hover:no-underline"
+						href={`mailto:marie-luise.pitzl@oeaw.ac.at`}
+					>
+						marie-luise.pitzl@oeaw.ac.at
+					</a>
+				</div>
+			</div>
+
+			<div></div>
+			<div class="grid gap-y-2">
+				<div class="font-medium">{t("WebsiteFooter.helpdesk")}</div>
+				<div>{t("WebsiteFooter.helpdesk-message")}</div>
+				<div>
+					<a
+						class="underline decoration-dotted underline-offset-4 hover:no-underline"
+						href="mailto:acdh-ch-helpdesk@oeaw.ac.at"
+					>
+						Contact
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-12 flex flex-wrap items-center justify-center gap-8">
+			<img alt="" class="h-16" loading="lazy" src={withBasePath("/assets/images/oeaw-logo.png")} />
+			<img
+				alt=""
+				class="h-16"
+				loading="lazy"
+				src={withBasePath("/assets/images/univie-logo.svg")}
+			/>
+			<img
+				alt=""
+				class="h-16"
+				loading="lazy"
+				src={withBasePath("/assets/images/clariah-at-logo.png")}
+			/>
+		</div>
+	</div>
+	<div
+		class="border-t border-neutral-separator bg-neutral-100 py-2 text-center text-sm text-neutral-text"
+	>
+		&copy; Copyright OEAW |
+		<Link class="underline decoration-dotted underline-offset-4 hover:no-underline" href="/imprint">
+			{imprint}
+		</Link>
+	</div>
+</footer>

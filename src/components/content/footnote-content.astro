@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { createFootnoteContentId, createFootnoteReferenceId } from "@/components/content/footnote";
+import type { Locale } from "@/config/i18n.config";
+import { createI18n } from "@/lib/i18n";
+
+interface Props {
+	count: number;
+}
+
+const { count } = Astro.props;
+
+const { t } = await createI18n(Astro.currentLocale as Locale | undefined);
+---
+
+<li id={createFootnoteContentId(count)}>
+	<slot />
+	<a class="ml-1.5" href={`#${createFootnoteReferenceId(count)}`}>
+		<Icon
+			aria-hidden="true"
+			class="inline size-4 shrink-0 stroke-1 align-sub text-neutral-500 transition hover:text-neutral-950 dark:hover:text-neutral-0"
+			name="lucide:square-arrow-left"
+		/>
+		<span class="sr-only">{t("FootnoteContent.back", { count })}</span>
+	</a>
+</li>

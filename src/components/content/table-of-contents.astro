@@ -1,0 +1,32 @@
+---
+import TableOfContentsLevel from "@/components/content/table-of-contents-level.astro";
+import type { Locale } from "@/config/i18n.config";
+import type { Toc } from "@/lib/content/table-of-contents";
+import { generateUniqueId } from "@/lib/generate-unique-id";
+import { createI18n } from "@/lib/i18n";
+
+interface Props {
+	tableOfContents: Toc;
+	title?: string;
+}
+
+const { tableOfContents, title } = Astro.props;
+
+const { t } = await createI18n(Astro.currentLocale as Locale | undefined);
+
+const id = generateUniqueId();
+---
+
+{
+	Array.isArray(tableOfContents) && tableOfContents.length > 0 ? (
+		<nav
+			aria-label={title != null ? undefined : t("TableOfContents.tableOfContents")}
+			aria-labelledby={title != null ? id : undefined}
+		>
+			{title != null ? <h2 id={id}>{title}</h2> : null}
+			<div class="not-prose mb-12">
+				<TableOfContentsLevel headings={tableOfContents} />
+			</div>
+		</nav>
+	) : null
+}

@@ -1,0 +1,19 @@
+---
+import { createFootnoteContentId, createFootnoteReferenceId } from "@/components/content/footnote";
+
+interface Props {
+	count: number;
+}
+
+const { count } = Astro.props;
+---
+
+{
+	/**
+	 * Formatting is intentional to avoid non-sup whitespace of the link,
+	 * which would also get an underline.
+	 */
+}
+<a href={`#${createFootnoteContentId(count)}`} id={createFootnoteReferenceId(count)}
+	><sup>{count}</sup></a
+>

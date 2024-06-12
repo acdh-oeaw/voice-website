@@ -1,0 +1,100 @@
+---
+import Card from "@/components/card.astro";
+import MainContent from "@/components/main-content.astro";
+import Section from "@/components/section.astro";
+import SectionTitle from "@/components/section-title.astro";
+import { defaultLocale as locale } from "@/config/i18n.config";
+import PageLayout from "@/layouts/page-layout.astro";
+import { getCollectionName } from "@/lib/content/get-collection-name";
+import { getSingletonName } from "@/lib/content/get-singleton-name";
+import { reader } from "@/lib/content/reader";
+import { createI18n } from "@/lib/i18n";
+
+const { t } = await createI18n(locale);
+
+const singleton = getSingletonName("indexPage", locale);
+const page = await reader().singletons[singleton].readOrThrow();
+
+const documentTitle = t("IndexPage.meta.title");
+const { hero, main } = page;
+---
+
+<PageLayout locale={locale} title={documentTitle}>
+	<MainContent>
+		<section class="relative border-y border-brand">
+			<div class="absolute inset-0 size-full">
+				<div class="absolute inset-0 size-full bg-brand-intent"></div>
+			</div>
+			<div class="relative mx-auto grid w-full max-w-screen-lg gap-y-6 px-4 py-16 text-white">
+				<h1 class="text-4xl font-medium">{hero.title}</h1>
+				<p class="max-w-[52rem] text-xl">
+					{hero.subtitle}
+				</p>
+			</div>
+		</section>
+
+		<div class="grid gap-y-12 py-12">
+			{
+				main.sections.map((section) => {
+					switch (section.discriminant) {
+						case "cardsSection": {
+							const { title, cards, variant } = section.value;
+
+							const variants = {
+								fluid: "grid-fluid-cols-80",
+								"full-width": "",
+								"two-columns": "grid-cols-2",
+								"three-columns": "grid-cols-3",
+								"four-columns": "grid-cols-4",
+							};
+
+							return (
+								<Section>
+									<SectionTitle>{title}</SectionTitle>
+									<ul class:list={["grid gap-8", variants[variant]]} role="list">
+										{cards.map(async (card) => {
+											switch (card.discriminant) {
+												case "custom": {
+													const { title, image, summary, link } = card.value;
+
+													return (
+														<li>
+															<Card image={image} title={title} summary={summary} link={link} />
+														</li>
+													);
+												}
+
+												case "page": {
+													const id = card.value.reference;
+													const collectionName = getCollectionName("pages", locale);
+													const page = await reader().collections[collectionName].readOrThrow(id);
+													const { title, image, summary } = page;
+
+													const link = { href: `/${id}`, label: card.value.link.label };
+
+													return (
+														<li>
+															<Card image={image} title={title} summary={summary} link={link} />
+														</li>
+													);
+												}
+
+												default: {
+													return null;
+												}
+											}
+										})}
+									</ul>
+								</Section>
+							);
+						}
+
+						default: {
+							return null;
+						}
+					}
+				})
+			}
+		</div>
+	</MainContent>
+</PageLayout>

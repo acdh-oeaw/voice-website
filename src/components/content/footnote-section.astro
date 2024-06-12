@@ -1,0 +1,13 @@
+---
+import type { Locale } from "@/config/i18n.config";
+import { createI18n } from "@/lib/i18n";
+
+const { t } = await createI18n(Astro.currentLocale as Locale | undefined);
+---
+
+<section class="border-t py-4">
+	<h2 class="sr-only">{t("FootnoteSection.footnotes")}</h2>
+	<ol class="grid gap-y-3 text-sm">
+		<slot />
+	</ol>
+</section>

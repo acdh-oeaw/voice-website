@@ -1,0 +1,160 @@
+{
+  "hero": {
+    "title": "VOICE: Vienna-Oxford International Corpus of English",
+    "subtitle": "VOICE is a computerized open-access corpus capturing more than one million words of naturally-occurring, spoken English as a lingua franca (ELF) interactions."
+  },
+  "main": {
+    "sections": [
+      {
+        "discriminant": "cardsSection",
+        "value": {
+          "title": "VOICE 3.0 Online",
+          "variant": "full-width",
+          "cards": [
+            {
+              "discriminant": "custom",
+              "value": {
+                "title": "Corpus access",
+                "image": "/assets/content/en/index-page/main/sections/0/value/cards/0/value/image.png",
+                "summary": "Access VOICE 3.0 Online here.",
+                "link": {
+                  "label": "Try it out",
+                  "href": "https://voice3.acdh.oeaw.ac.at"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "discriminant": "cardsSection",
+        "value": {
+          "title": "Corpus information",
+          "variant": "fluid",
+          "cards": [
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "What is VOICE 3.0?",
+                "reference": "what-is-voice-3-0",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            },
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "Cite VOICE 3.0 Online",
+                "reference": "cite-voice-3-0-online",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            },
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "About VOICE",
+                "reference": "about-voice",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "discriminant": "cardsSection",
+        "value": {
+          "title": "Corpus resources",
+          "variant": "fluid",
+          "cards": [
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "Search manual",
+                "reference": "search-manual",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            },
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "Transcription conventions",
+                "reference": "transcription-conventions",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            },
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "POS and lemmatization manuals",
+                "reference": "pos-manuals",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            },
+            {
+              "discriminant": "custom",
+              "value": {
+                "title": "How to",
+                "image": "/assets/content/en/index-page/main/sections/2/value/cards/3/value/image.png",
+                "summary": "Click here to access the VOICE 3.0 Online tutorial materials. ",
+                "link": {
+                  "label": "Read more",
+                  "href": "https://howto.acdh.oeaw.ac.at/en/resources/voice-3-0-tutorial"
+                }
+              }
+            },
+            {
+              "discriminant": "page",
+              "value": {
+                "title": " VOICE 3.0 Online videos",
+                "reference": "voice-3-0-online-videos",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "discriminant": "cardsSection",
+        "value": {
+          "title": "VOICE CLARIAH Project",
+          "variant": "two-columns",
+          "cards": [
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "About VOICE CLARIAH",
+                "reference": "about-voice-clariah",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            },
+            {
+              "discriminant": "page",
+              "value": {
+                "title": "Project Team",
+                "reference": "project-team",
+                "link": {
+                  "label": "Read more"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

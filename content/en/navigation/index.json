@@ -1,0 +1,91 @@
+{
+  "links": [
+    {
+      "discriminant": "menu",
+      "value": {
+        "label": "VOICE",
+        "links": [
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "About VOICE",
+              "reference": "about-voice"
+            }
+          },
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "What is VOICE 3.0?",
+              "reference": "what-is-voice-3-0"
+            }
+          },
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "Cite VOICE 3.0 Online",
+              "reference": "cite-voice-3-0-online"
+            }
+          },
+          {
+            "discriminant": "link",
+            "value": {
+              "label": "Access VOICE 3.0 Online",
+              "href": "https://voice3.acdh.oeaw.ac.at/"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "menu",
+      "value": {
+        "label": "Resources",
+        "links": [
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "Search manual",
+              "reference": "search-manual"
+            }
+          },
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "Transcription conventions",
+              "reference": "transcription-conventions"
+            }
+          },
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "POS and lemmatization manuals",
+              "reference": "pos-manuals"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "menu",
+      "value": {
+        "label": "VOCIE CLARIAH",
+        "links": [
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "About VOCIE CLARIAH",
+              "reference": "about-voice-clariah"
+            }
+          },
+          {
+            "discriminant": "page",
+            "value": {
+              "label": "Project Team",
+              "reference": "project-team"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -16,10 +16,10 @@ importers:
         version: 0.0.3
       '@astrojs/mdx':
         specifier: ^3.1.1
-        version: 3.1.1(astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5))
+        version: 3.1.1(astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5))
       '@astrojs/node':
         specifier: ^8.3.1
-        version: 8.3.1(astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5))
+        version: 8.3.1(astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5))
       '@astrojs/react':
         specifier: ^3.6.0
         version: 3.6.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.3.1(@types/node@20.14.6))
@@ -36,11 +36,11 @@ importers:
         specifier: ^5.0.18
         version: 5.0.18
       '@iconify-json/lucide':
-        specifier: ^1.1.193
-        version: 1.1.193
+        specifier: ^1.1.194
+        version: 1.1.194
       '@keystatic/astro':
         specifier: ^5.0.0
-        version: 5.0.0(@keystatic/core@0.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.0.0(@keystatic/core@0.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@keystatic/core':
         specifier: ^0.5.22
         version: 0.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -54,8 +54,8 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0
       astro:
-        specifier: ^4.10.3
-        version: 4.10.3(@types/node@20.14.6)(typescript@5.4.5)
+        specifier: ^4.11.0
+        version: 4.11.0(@types/node@20.14.6)(typescript@5.4.5)
       astro-icon:
         specifier: ^1.1.0
         version: 1.1.0
@@ -814,8 +814,8 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
 
-  '@iconify-json/lucide@1.1.193':
-    resolution: {integrity: sha512-W2vTXvOgogRAqEN1htpILhajn0xm93AUDfmgh3zRRobpPqYNwx91lE9oNBxvz8AY2dVaCzK9zZjC2/H25C5AIA==}
+  '@iconify-json/lucide@1.1.194':
+    resolution: {integrity: sha512-+0mXyNLmAnoS4aTVlYtKzdAe6BHs0tKoLf8KfQUVuFW03+r4HFon6bjuxGc80VpaHBiK8E/OxsTXzNPYR6xNrQ==}
 
   '@iconify/tools@3.0.7':
     resolution: {integrity: sha512-DxfhFLMnooS34dHelpGUnnYrxLZHs0czC1CgrBhAbuL8ddVzBb2VEQm8kh9qGh7A34qeXAB5iSHH3A72rAaFrg==}
@@ -2042,8 +2042,8 @@ packages:
   astro-icon@1.1.0:
     resolution: {integrity: sha512-Nksc09p7UuHeMcPNS9w1pKqRw3+wEmmh0A3FJW+FNXvqaeWI4RLvD1MCWErpY3Z5Cvad317rvLdik/Hg8GEk8Q==}
 
-  astro@4.10.3:
-    resolution: {integrity: sha512-TWCJM+Vg+y0UoEz/H75rfp/u2N8yxeQQ2UrU9+fMcbjlzQJtGGDq3ApdundqPZgAuCryRuJnrKytStMZCFnlvQ==}
+  astro@4.11.0:
+    resolution: {integrity: sha512-3VWxz/08sChQIX68tuE7Y769DUdjsT3Zq2/y4SkrDRlwN9IZ/aebwcRWr5a2yMSdO2vpFxtEdobq0mKnMlLErg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -5479,12 +5479,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.1(astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5))':
+  '@astrojs/mdx@3.1.1(astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5))':
     dependencies:
       '@astrojs/markdown-remark': 5.1.0
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.0
-      astro: 4.10.3(@types/node@20.14.6)(typescript@5.4.5)
+      astro: 4.11.0(@types/node@20.14.6)(typescript@5.4.5)
       es-module-lexer: 1.5.3
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -5500,9 +5500,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@8.3.1(astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5))':
+  '@astrojs/node@8.3.1(astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5))':
     dependencies:
-      astro: 4.10.3(@types/node@20.14.6)(typescript@5.4.5)
+      astro: 4.11.0(@types/node@20.14.6)(typescript@5.4.5)
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -5985,7 +5985,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify-json/lucide@1.1.193':
+  '@iconify-json/lucide@1.1.194':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6235,12 +6235,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@keystatic/astro@5.0.0(@keystatic/core@0.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@keystatic/astro@5.0.0(@keystatic/core@0.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.4
       '@keystatic/core': 0.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/react': 18.3.3
-      astro: 4.10.3(@types/node@20.14.6)(typescript@5.4.5)
+      astro: 4.11.0(@types/node@20.14.6)(typescript@5.4.5)
       cookie: 0.5.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -7873,7 +7873,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@4.10.3(@types/node@20.14.6)(typescript@5.4.5):
+  astro@4.11.0(@types/node@20.14.6)(typescript@5.4.5):
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@astrojs/internal-helpers': 0.4.0

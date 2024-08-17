@@ -22,6 +22,6 @@ const { t } = await createI18n(Astro.currentLocale as Locale | undefined);
 			class="inline size-4 shrink-0 stroke-1 align-sub text-neutral-500 transition hover:text-neutral-950 dark:hover:text-neutral-0"
 			name="lucide:square-arrow-left"
 		/>
-		<span class="sr-only">{t("FootnoteContent.back", { count })}</span>
+		<span class="sr-only">{t("mdx.FootnoteBackLabel", { count })}</span>
 	</a>
 </li>

@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import type { MDXComponents } from "mdx/types";
-
 import Callout from "@/components/content/callout.astro";
 import Download from "@/components/content/download.astro";
 import Figure from "@/components/content/figure.astro";
@@ -16,22 +14,26 @@ import TeamMember from "@/components/content/team-member.astro";
 import Video from "@/components/content/video.astro";
 import Link from "@/components/link.astro";
 
-export function useMDXComponents(): MDXComponents {
-	return {
-		// @ts-expect-error It's fine.
-		a: Link,
-		Callout,
-		Download,
-		Figure,
-		FootnoteContent,
-		FootnoteReference,
-		FootnotesSection,
-		Grid,
-		GridItem,
-		// @ts-expect-error It's fine.
-		img: Img,
-		TableOfContents,
-		TeamMember,
-		Video,
-	};
+const components = {
+	a: Link,
+	Callout,
+	Download,
+	Figure,
+	FootnoteContent,
+	FootnoteReference,
+	FootnotesSection,
+	Grid,
+	GridItem,
+	img: Img,
+	TableOfContents,
+	TeamMember,
+	Video,
+};
+
+declare global {
+	type MDXProvidedComponents = typeof components;
+}
+
+export function useMDXComponents(): MDXProvidedComponents {
+	return components;
 }

@@ -22,11 +22,6 @@ export default defineConfig({
 		mode: "standalone",
 	}),
 	base: env.PUBLIC_APP_BASE_PATH,
-	experimental: {
-		// actions: true,
-		contentCollectionCache: true,
-		rewriting: true,
-	},
 	integrations: [
 		icon({
 			/** @see https://www.astroicon.dev/reference/configuration/#include */

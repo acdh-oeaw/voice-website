@@ -9,6 +9,7 @@ import { withBasePath } from "@/lib/with-base-path";
 const { t } = await createI18n(Astro.currentLocale as Locale | undefined);
 
 const imprint = t("WebsiteFooter.links.imprint");
+const email = t("metadata.email");
 ---
 
 <footer class="border-t border-t-neutral-separator bg-white">
@@ -66,9 +67,9 @@ const imprint = t("WebsiteFooter.links.imprint");
 				<div>
 					<a
 						class="underline decoration-dotted underline-offset-4 hover:no-underline"
-						href={`mailto:marie-luise.pitzl@oeaw.ac.at`}
+						href={`mailto:${email}`}
 					>
-						marie-luise.pitzl@oeaw.ac.at
+						{email}
 					</a>
 				</div>
 			</div>

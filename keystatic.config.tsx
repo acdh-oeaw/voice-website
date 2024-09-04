@@ -522,6 +522,10 @@ const singletons = {
 					label: "Twitter handle",
 					// validation: { isRequired: false },
 				}),
+				email: fields.text({
+					label: "Email address",
+					validation: { isRequired: true },
+				}),
 			},
 		});
 	}),

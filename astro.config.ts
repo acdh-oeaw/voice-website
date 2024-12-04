@@ -55,7 +55,6 @@ export default defineConfig({
 	// 	smartypants: false,
 	// 	syntaxHighlight: false,
 	// },
-	output: "hybrid",
 	prefetch: {
 		defaultStrategy: "hover",
 		prefetchAll: true,
@@ -63,7 +62,7 @@ export default defineConfig({
 	redirects: {
 		"/admin": {
 			destination: env.PUBLIC_APP_BASE_PATH
-				? ensureTrailingSlash(env.PUBLIC_APP_BASE_PATH) + "/keystatic"
+				? `${ensureTrailingSlash(env.PUBLIC_APP_BASE_PATH)  }/keystatic`
 				: "/keystatic",
 			status: 307,
 		},

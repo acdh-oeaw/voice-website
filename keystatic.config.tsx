@@ -364,7 +364,7 @@ const singletons = {
 								cardsSection: {
 									label: "Cards section",
 									itemLabel(props) {
-										return props.fields.title.value + " (Cards)";
+										return `${props.fields.title.value  } (Cards)`;
 									},
 									schema: fields.object(
 										{
@@ -541,7 +541,7 @@ const singletons = {
 						link: {
 							label: "Link",
 							itemLabel(props) {
-								return props.fields.label.value + " (Link)";
+								return `${props.fields.label.value  } (Link)`;
 							},
 							schema: fields.object({
 								label: fields.text({
@@ -557,7 +557,7 @@ const singletons = {
 						page: {
 							label: "Page",
 							itemLabel(props) {
-								return props.fields.label.value + " (Page)";
+								return `${props.fields.label.value  } (Page)`;
 							},
 							schema: fields.object({
 								label: fields.text({
@@ -574,7 +574,7 @@ const singletons = {
 						menu: {
 							label: "Menu",
 							itemLabel(props) {
-								return props.fields.label.value + " (Menu)";
+								return `${props.fields.label.value  } (Menu)`;
 							},
 							schema: fields.object({
 								label: fields.text({
@@ -586,7 +586,7 @@ const singletons = {
 										link: {
 											label: "Link",
 											itemLabel(props) {
-												return props.fields.label.value + " (Link)";
+												return `${props.fields.label.value  } (Link)`;
 											},
 											schema: fields.object(
 												{
@@ -607,7 +607,7 @@ const singletons = {
 										page: {
 											label: "Page",
 											itemLabel(props) {
-												return props.fields.label.value + " (Page)";
+												return `${props.fields.label.value  } (Page)`;
 											},
 											schema: fields.object(
 												{

@@ -6,7 +6,7 @@ website for the voice project.
 
 prerequisites:
 
-- [node.js 20.x](https://nodejs.org/en/download)
+- [node.js 22.x](https://nodejs.org/en/download)
 - [pnpm 9.x](https://pnpm.io/installation)
 
 > [!TIP]

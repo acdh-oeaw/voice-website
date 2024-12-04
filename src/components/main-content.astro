@@ -9,8 +9,7 @@ const { class: className, search } = Astro.props;
 
 <main
 	class:list={["isolate bg-neutral-50", className]}
-	id="main-content"
-	data-pagefind-body={search === "exclude" ? undefined : ""}
+	data-pagefind-body={search === "exclude" ? undefined : ""}  id="main-content"
 	tabindex={-1}
 >
 	<slot />

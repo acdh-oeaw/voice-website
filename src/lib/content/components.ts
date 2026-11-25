@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import Callout from "@/components/content/callout.astro";
 import Download from "@/components/content/download.astro";
 import Figure from "@/components/content/figure.astro";

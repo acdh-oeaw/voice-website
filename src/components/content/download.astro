@@ -8,4 +8,6 @@ interface Props {
 const { href } = Astro.props;
 ---
 
-<Link download="" href={href}><slot /></Link>
+<Link download="" href={href}>
+	<slot />
+</Link>

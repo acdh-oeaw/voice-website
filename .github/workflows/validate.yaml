@@ -22,9 +22,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
@@ -41,28 +41,30 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [24.x]
+        node-version: [26.x]
         os: [ubuntu-24.04]
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
+          runtime: node@${{ matrix.node-version }}
+          cache: true
+          install: false
 
       - name: Cache astro build artefacts
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
-          path: node_modules/.astro/
-          key: ${{ runner.os }}-astro-${{ matrix.node-version }}-${{ github.run_id }}
-          restore-keys: ${{ runner.os }}-astro-${{ matrix.node-version }}
+          path: |
+            node_modules/.astro/assets/
+            node_modules/.astro/fonts/
+          key:
+            ${{ runner.os }}-astro-assets-fonts-${{ matrix.node-version }}-${{ github.run_id }}-${{
+            github.run_attempt }}
+          restore-keys: ${{ runner.os }}-astro-assets-fonts-${{ matrix.node-version }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -85,7 +87,7 @@ jobs:
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
       - name: Cache playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         id: cache-playwright-browsers
         with:
           path: "~/.cache/ms-playwright"
@@ -109,7 +111,7 @@ jobs:
         env:
           PUBLIC_APP_BASE_URL: "http://localhost:3000"
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: playwright-report

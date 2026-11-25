@@ -23,7 +23,6 @@ import {
 
 import { Logo } from "@/components/logo";
 import { createAssetPaths, createPreviewUrl } from "@/config/content.config";
-import { env } from "@/config/env.config";
 import type { Locale } from "@/config/i18n.config";
 import { getCollectionName } from "@/lib/content/get-collection-name";
 import { useObjectUrl } from "@/lib/content/use-object-url";
@@ -31,7 +30,7 @@ import { useObjectUrl } from "@/lib/content/use-object-url";
 function createCollection<T extends Record<string, ComponentSchema>, U extends string>(
 	path: `/${string}/`,
 	create: (
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// oxlint-disable-next-line typescript/no-explicit-any
 		path: Collection<any, any>["path"],
 		assetPath: `/${string}/`,
 		locale: Locale,
@@ -46,7 +45,7 @@ function createCollection<T extends Record<string, ComponentSchema>, U extends s
 
 function createSingleton<T extends Record<string, ComponentSchema>>(
 	path: `/${string}/`,
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line typescript/no-explicit-any
 	create: (path: Singleton<any>["path"], assetPath: `/${string}/`, locale: Locale) => Singleton<T>,
 ) {
 	return function createI18nCollection(locale: Locale): Singleton<T> {
@@ -662,24 +661,7 @@ export default config({
 			Settings: ["en_metadata"],
 		},
 	},
-	storage:
-		/**
-		 * @see https://keystatic.com/docs/github-mode
-		 */
-		env.PUBLIC_KEYSTATIC_MODE === "github" &&
-		env.PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER &&
-		env.PUBLIC_KEYSTATIC_GITHUB_REPO_NAME
-			? {
-					kind: "github",
-					repo: {
-						owner: env.PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER,
-						name: env.PUBLIC_KEYSTATIC_GITHUB_REPO_NAME,
-					},
-					branchPrefix: "content/",
-				}
-			: {
-					kind: "local",
-				},
+	storage: { kind: "local" },
 	collections: {
 		en_pages: collections.pages("en"),
 	},

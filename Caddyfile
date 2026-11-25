@@ -1,0 +1,14 @@
+:3000 {
+	root * /usr/share/caddy
+
+	handle_path {$APP_BASE_PATH}/* {
+		header /_astro/* Cache-Control "public, max-age=31536000, immutable"
+		try_files {path} {path}/
+		file_server
+	}
+
+	handle_errors {
+		rewrite * /{err.status_code}.html
+		file_server
+	}
+}

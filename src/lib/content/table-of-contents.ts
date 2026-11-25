@@ -56,13 +56,13 @@ export const withTableOfContents = function withTableOfContents() {
 					previous.children ??= [];
 					parents.push(previous);
 				} else if (heading.depth < previous.depth) {
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					// oxlint-disable-next-line typescript/no-non-null-assertion
 					while (parents[parents.length - 1]!.depth >= heading.depth) {
 						parents.pop();
 					}
 				}
 
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				// oxlint-disable-next-line typescript/no-non-null-assertion
 				parents[parents.length - 1]!.children!.push(heading);
 				previous = heading;
 			});
@@ -88,6 +88,7 @@ export const withMdxTableOfContents = function withMdxTableOfContents() {
 					body: [
 						{
 							type: "ExportNamedDeclaration",
+							attributes: [],
 							source: null,
 							specifiers: [],
 							declaration: {

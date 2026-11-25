@@ -6,12 +6,12 @@ website for the voice project.
 
 prerequisites:
 
-- [node.js 24.x](https://nodejs.org/en/download)
-- [pnpm 10.x](https://pnpm.io/installation)
+- [node.js 26.x](https://nodejs.org/en/download)
+- [pnpm 12.x](https://pnpm.io/installation)
 
 > [!TIP]
 >
-> you can use `pnpm` to install the required node.js version with `pnpm env use 24 --global`
+> you can use `pnpm` to install the required node.js version with `pnpm env use 26 --global`
 
 set required environment variables in `.env.local`:
 
@@ -67,9 +67,11 @@ pnpm run dev
 
 ## how to edit content
 
-use the admin ui at when developing locally <http://localhost:3000/admin> (this will save changes to
-the filesystem), or at <https://template-website-astro.acdh-ch-dev.oeaw.ac.at/admin> (this will
-commit changes to the github repository).
+Run `pnpm dev` and open <http://localhost:3000/keystatic>. The editor saves changes to local content
+files. Commit and push those changes to publish them through the deployment workflow. If
+`PUBLIC_APP_BASE_PATH` is set, prefix the editor URL with that path.
+
+Keystatic and its API are available only during local development and are excluded from production.
 
 ## how to deploy
 
@@ -104,9 +106,17 @@ if the validation pipeline passes.
 you can reference the [template repository](https://github.com/acdh-oeaw/template-website-astro) for
 a working setup.
 
-> [!NOTE]
->
-> by default, this will deploy a `node` server, which will serve pre-rendered pages, assets, and api
-> routes. if you prefer a truly static build, which uses `caddy` as a fileserver, use the
-> `Dockerfile.static` instead, and remove `output: "hybrid"` from `astro.config.ts`. you will also
-> need to change the `generate:search-index` script to `pagefind --site ./dist/`.
+`pnpm build` generates the static site and Pagefind search index in `dist/`. The Dockerfile serves
+those files with Caddy on port 3000 as an unprivileged user, using `Caddyfile`. `Dockerfile.static`
+provides the same build for existing callers. Content updates require a new build. Compression is
+handled by the existing Traefik middleware. CI restores Astro's assets cache and exports its updated
+contents through the `astro-cache` Docker target for subsequent builds.
+
+The Docker context uses an allowlist in `.dockerignore`; add new build inputs there when needed.
+Caddy configuration is copied separately so changing it reuses the application build. Docker uses
+the base image's Node installation, while pnpm runtime management remains available locally. Only
+Astro's image and font caches are restored and exported.
+
+The build prunes unreferenced images from `dist/assets/content/` and `dist/_astro/`, preserving
+linked images and non-image downloads such as the VOICE manuals. Source assets remain in `public/`
+for local editing and future builds. Run `pnpm test` to check asset pruning.

@@ -20,9 +20,6 @@ ingress:
   enabled: true
   path: "/"
   className: "traefik"
-  # arz does tls for oeaw.ac.at
-  tls:
-    enabled: false
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: kube-system-compress@kubernetescrd
 livenessProbe:

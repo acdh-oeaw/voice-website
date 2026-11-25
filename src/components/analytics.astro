@@ -13,7 +13,6 @@ const { baseUrl, id } = Astro.props;
 	is:inline
 	set:html={`(${String(createAnalyticsScript)})("${baseUrl.endsWith("/") ? baseUrl : baseUrl + "/"}", "${String(id)}");`}
 />
-
 <script>
 	import type { Locale } from "@/config/i18n.config";
 	import { initAnalytics } from "@/lib/analytics";

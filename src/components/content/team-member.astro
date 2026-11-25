@@ -15,8 +15,10 @@ const { name, email, image, description } = Astro.props;
 		<h2 class="text-lg font-bold">{name}</h2>
 		<a
 			class="underline decoration-dotted underline-offset-4 transition hover:decoration-solid"
-			href={`mailto:${email}`}>{email}</a
+			href={`mailto:${email}`}
 		>
+			{email}
+		</a>
 		<p>{description}</p>
 	</div>
 </article>

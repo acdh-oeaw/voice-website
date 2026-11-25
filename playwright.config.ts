@@ -1,12 +1,14 @@
-import { join } from "node:path";
+import { loadEnvFile } from "node:process";
 
 import { defineConfig, devices } from "@playwright/test";
 import { isCI } from "ci-info";
-import { config as dotenv } from "dotenv";
-import { expand } from "dotenv-expand";
 
 for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]) {
-	expand(dotenv({ path: join(process.cwd(), envFilePath) }));
+	try {
+		loadEnvFile(envFilePath);
+	} catch (error) {
+		if (!(error instanceof Error && "code" in error && error.code === "ENOENT")) throw error;
+	}
 }
 
 const port = 3000;
@@ -69,7 +71,7 @@ export default defineConfig({
 		// },
 	],
 	webServer: {
-		command: "pnpm run start",
+		command: "pnpm run start --ignore-lock",
 		url: baseUrl,
 		reuseExistingServer: !isCI,
 	},

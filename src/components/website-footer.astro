@@ -13,15 +13,13 @@ const email = t("metadata.email");
 ---
 
 <footer class="border-t border-t-neutral-separator bg-white">
-	<div class="mx-auto grid w-full max-w-screen-lg gap-y-6 px-4 py-12 text-neutral-text">
+	<div class="mx-auto grid w-full max-w-(--breakpoint-lg) gap-y-6 px-4 py-12 text-neutral-text">
 		<div class="flex w-full items-center gap-x-1.5 border-b border-neutral-separator pb-4">
 			<Icon aria-hidden="true" class="size-4.5" name="lucide:message-circle" />
 			<span class="text-sm font-medium">{t("WebsiteFooter.contact")}</span>
 		</div>
 
-		<div
-			class="grid grid-cols-[auto_1fr] items-start gap-x-8 gap-y-6 md:grid-cols-[auto_1fr_auto_1fr]"
-		>
+		<div class="grid grid-cols-[auto_1fr] items-start gap-x-8 gap-y-6 md:grid-cols-[auto_1fr_auto_1fr]">
 			<div>
 				<a class="inline-flex py-1" href="https://www.oeaw.ac.at/acdh/">
 					<img
@@ -105,9 +103,7 @@ const email = t("metadata.email");
 			/>
 		</div>
 	</div>
-	<div
-		class="border-t border-neutral-separator bg-neutral-100 py-2 text-center text-sm text-neutral-text"
-	>
+	<div class="border-t border-neutral-separator bg-neutral-100 py-2 text-center text-sm text-neutral-text">
 		&copy; Copyright OEAW |
 		<Link class="underline decoration-dotted underline-offset-4 hover:no-underline" href="/imprint">
 			{imprint}

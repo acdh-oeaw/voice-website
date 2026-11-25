@@ -13,4 +13,6 @@ const pathname = localisedHref instanceof URL ? localisedHref.pathname : localis
 const isCurrent = pathname === Astro.url.pathname;
 ---
 
-<a {...rest} aria-current={isCurrent ? "page" : undefined} href={localisedHref}><slot /></a>
+<a {...rest} aria-current={isCurrent ? "page" : undefined} href={localisedHref}>
+	<slot />
+</a>

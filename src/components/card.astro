@@ -14,33 +14,27 @@ interface Props {
 const { image, title, summary, link } = Astro.props;
 ---
 
-<article class="rounded-b border-t-5 border-t-brand bg-white shadow-lg">
-	{
-		image != null ? (
-			<Link
-				aria-label={title}
-				class="relative block aspect-[1.125] max-h-96 w-full"
-				href={link.href}
-			>
-				<Image
-					alt=""
-					class="absolute inset-0 size-full object-cover"
-					sizes="670px"
-					src={getImageImport(image)}
-					widths={[670]}
-				/>
-			</Link>
-		) : null
-	}
+<article class="border-t-5 border-t-brand bg-white shadow-lg">
+	{image != null ? (
+		<Link aria-label={title} class="relative block aspect-[1.125] max-h-96 w-full" href={link.href}>
+			<Image
+				alt=""
+				class="absolute inset-0 size-full object-cover"
+				sizes="670px"
+				src={getImageImport(image)}
+				widths={[670]}
+			/>
+		</Link>
+	) : null}
 	<div class="grid gap-y-2 p-8">
 		<h3 class="text-xl font-medium">
 			<Link href={link.href}>{title}</Link>
 		</h3>
 		<p class="leading-relaxed text-neutral-600">{summary}</p>
 		<footer class="mt-2 text-right">
-			<Link class="text-brand transition hover:text-brand-intent" href={link.href}
-				>{link.label}</Link
-			>
+			<Link class="text-brand transition hover:text-brand-intent" href={link.href}>
+				{link.label}
+			</Link>
 		</footer>
 	</div>
 </article>

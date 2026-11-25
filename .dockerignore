@@ -1,66 +1,23 @@
-## .gitignore ##
+# Build context allowlist: include only application inputs and reusable caches.
+**
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!astro.config.ts
+!tsconfig.json
+!keystatic.config.tsx
 
-# dependencies
-node_modules/
-.pnpm-store/
+# Tailwind uses .gitignore to determine which sources to scan.
+!.gitignore
+!src/**
+!content/**
+!public/**
+!scripts/prune-assets.ts
 
-# logs
-*.log
+# Runtime configuration is copied separately from application sources.
+!Caddyfile
 
-# non-public environment variables
-.env.local
-.env.*.local
-
-# caches
-.eslintcache
-.stylelintcache
-*.tsbuildinfo
-
-# vercel
-.vercel
-
-# misc
-.DS_Store
-.idea/
-
-# astro
-dist/
-.astro/
-
-# test
-/coverage/
-
-# playwright
-/blob-report/
-/playwright/.cache/
-/playwright-report/
-/test-results/
-
-
-## .dockerignore ##
-
-# git
-.git/
-.gitattributes
-.gitignore
-
-# github
-.github/
-
-# vscode settings
-.vscode/
-
-# environment variables
-.env
-.env.*
-
-# tests
-playwright.config.ts
-/e2e/
-/test/
-
-# misc
-.editorconfig
-
-# astro assets cache
-!/node_modules/.astro/
+# Exclude dependencies and Vite caches; reuse optimized images and fonts only.
+!node_modules/.astro/assets/**
+!node_modules/.astro/fonts/**
+**/*.test.*

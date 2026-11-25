@@ -76,57 +76,55 @@ const { t } = await createI18n((Astro.currentLocale as Locale | undefined) ?? de
 		</div>
 
 		<div id={id} aria-live="off" class="relative aspect-[2.125]" data-carousel-items>
-			{
-				slides.map((slide, index) => {
-					const alignments = {
-						left: "left-0",
-						right: "right-0",
-					};
+			{slides.map((slide, index) => {
+				const alignments = {
+					left: "left-0",
+					right: "right-0",
+				};
 
-					const href = `/${slide.page}`;
+				const href = `/${slide.page}`;
 
-					return (
-						<div
-							data-carousel-item
-							data-active={index === 0 ? "" : undefined}
-							role="group"
-							aria-roledescription="slide"
-							aria-label={t("ImageCarousel.slide", {
-								current: index,
-								total: slides.length,
-							})}
-							class="group relative size-full"
+				return (
+					<div
+						data-carousel-item
+						data-active={index === 0 ? "" : undefined}
+						role="group"
+						aria-roledescription="slide"
+						aria-label={t("ImageCarousel.slide", {
+							current: index,
+							total: slides.length,
+						})}
+						class="group relative size-full"
+					>
+						<Link
+							class="block size-full -outline-offset-2 focus-visible:outline-white"
+							aria-label={slide.title}
+							href={href}
 						>
-							<Link
-								class="block size-full -outline-offset-2 focus-visible:outline-white"
-								aria-label={slide.title}
-								href={href}
-							>
-								<Image
-									alt=""
-									class="size-full object-cover"
-									loading={index === 0 ? "eager" : undefined}
-									src={getImageImport(slide.image)}
-								/>
-							</Link>
-							<div
-								class:list={[
-									"absolute bottom-0 grid w-96 gap-y-2 border-t-4 bg-black/50 p-8 text-white",
-									alignments[slide.alignment],
-								]}
-							>
-								<h2 class="text-xl font-bold">
-									<Link class="focus-visible:outline-white" href={href}>
-										{slide.title}
-									</Link>
-								</h2>
-								<hr class="my-1 border" />
-								<div>{slide.summary}</div>
-							</div>
+							<Image
+								alt=""
+								class="size-full object-cover"
+								loading={index === 0 ? "eager" : undefined}
+								src={getImageImport(slide.image)}
+							/>
+						</Link>
+						<div
+							class:list={[
+								"absolute bottom-0 grid w-96 gap-y-2 border-t-4 bg-black/50 p-8 text-white",
+								alignments[slide.alignment],
+							]}
+						>
+							<h2 class="text-xl font-bold">
+								<Link class="focus-visible:outline-white" href={href}>
+									{slide.title}
+								</Link>
+							</h2>
+							<hr class="my-1 border" />
+							<div>{slide.summary}</div>
 						</div>
-					);
-				})
-			}
+					</div>
+				);
+			})}
 		</div>
 	</div>
 </image-carousel>
@@ -166,16 +164,18 @@ const { t } = await createI18n((Astro.currentLocale as Locale | undefined) ?? de
 				current: 0,
 			};
 
-			const root = this.querySelector<HTMLDivElement>("div[data-carousel]");
+			const rootElement = this.querySelector<HTMLDivElement>("div[data-carousel]");
 			const container = this.querySelector<HTMLDivElement>("div[data-carousel-items]");
-			const liveRegion = this.querySelector<HTMLDivElement>("div[data-carousel-items]");
+			const liveRegionElement = this.querySelector<HTMLDivElement>("div[data-carousel-items]");
 			const slides = this.querySelectorAll<HTMLDivElement>("div[data-carousel-item]");
 			const toggle = this.querySelector<HTMLButtonElement>("button[data-control-toggle]");
 			const previous = this.querySelector<HTMLButtonElement>("button[data-control-previous]");
 			const next = this.querySelector<HTMLButtonElement>("button[data-control-next]");
-			assert(root);
+			assert(rootElement);
+			const root = rootElement;
 			assert(container);
-			assert(liveRegion);
+			assert(liveRegionElement);
+			const liveRegion = liveRegionElement;
 			assert(slides.length);
 			assert(toggle);
 			assert(previous);
@@ -216,8 +216,8 @@ const { t } = await createI18n((Astro.currentLocale as Locale | undefined) ?? de
 				}
 				state.paused = false;
 				timer = setInterval(onNextSlide, delay);
-				root!.dataset.state = "playing";
-				liveRegion!.setAttribute("aria-live", "off");
+				root.dataset.state = "playing";
+				liveRegion.setAttribute("aria-live", "off");
 			}
 
 			function pause(force?: boolean) {
@@ -227,7 +227,7 @@ const { t } = await createI18n((Astro.currentLocale as Locale | undefined) ?? de
 				state.paused = true;
 				if (timer) clearInterval(timer);
 				timer = null;
-				root!.dataset.state = "paused";
+				root.dataset.state = "paused";
 			}
 
 			function onTogglePlayState() {
@@ -263,14 +263,14 @@ const { t } = await createI18n((Astro.currentLocale as Locale | undefined) ?? de
 
 			function onFocusIn(event: FocusEvent) {
 				const elementLosingFocus = event.relatedTarget as Element | null;
-				if (elementLosingFocus == null || !root!.contains(elementLosingFocus)) {
+				if (elementLosingFocus == null || !root.contains(elementLosingFocus)) {
 					pause();
 				}
 			}
 
 			function onFocusOut(event: FocusEvent) {
 				const elementReceivingFocus = event.relatedTarget as Element | null;
-				if (elementReceivingFocus == null || !root!.contains(elementReceivingFocus)) {
+				if (elementReceivingFocus == null || !root.contains(elementReceivingFocus)) {
 					autoplay();
 				}
 			}

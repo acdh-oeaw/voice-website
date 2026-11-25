@@ -23,9 +23,7 @@ const home = t("WebsiteHeader.links.home");
 ---
 
 <header class="border-b-5 border-brand bg-white text-neutral-text">
-	<div
-		class="mx-auto flex w-full max-w-screen-lg items-center justify-between px-4 py-2 text-sm font-medium"
-	>
+	<div class="mx-auto flex w-full max-w-(--breakpoint-lg) items-center justify-between px-4 py-2 text-sm font-medium">
 		<Navigation class="flex-1" label={t("WebsiteHeader.navigation-primary")}>
 			<NavMenuLink class="-ml-4 inline-flex items-center gap-x-2" href="/">
 				<Image
@@ -39,82 +37,80 @@ const home = t("WebsiteHeader.links.home");
 			</NavMenuLink>
 
 			<ul class="hidden flex-1 flex-wrap items-center gap-x-2 lg:flex" role="list">
-				{
-					navigation.links.map((item) => {
-						switch (item.discriminant) {
-							case "link": {
-								const { label, href } = item.value;
+				{navigation.links.map((item) => {
+					switch (item.discriminant) {
+						case "link": {
+							const { label, href } = item.value;
 
-								return (
-									<li>
-										<NavMenuLink href={href}>{label}</NavMenuLink>
-									</li>
-								);
-							}
-
-							case "page": {
-								const { label, reference } = item.value;
-
-								return (
-									<li>
-										<NavMenuLink href={`/${reference}`}>{label}</NavMenuLink>
-									</li>
-								);
-							}
-
-							case "menu": {
-								const { label, links } = item.value;
-
-								return (
-									<li>
-										<NavMenu>
-											<NavMenuTrigger>{label}</NavMenuTrigger>
-											<NavMenuPopover>
-												<ul role="list">
-													{links.map((link) => {
-														switch (link.discriminant) {
-															case "link": {
-																const { label, href } = link.value;
-
-																return (
-																	<li>
-																		<NavMenuItem href={href}>{label}</NavMenuItem>
-																	</li>
-																);
-															}
-
-															case "page": {
-																const { label, reference } = link.value;
-
-																return (
-																	<li>
-																		<NavMenuItem href={`/${reference}`}>{label}</NavMenuItem>
-																	</li>
-																);
-															}
-
-															case "separator": {
-																return <hr />;
-															}
-
-															default: {
-																return null;
-															}
-														}
-													})}
-												</ul>
-											</NavMenuPopover>
-										</NavMenu>
-									</li>
-								);
-							}
-
-							default: {
-								return null;
-							}
+							return (
+								<li>
+									<NavMenuLink href={href}>{label}</NavMenuLink>
+								</li>
+							);
 						}
-					})
-				}
+
+						case "page": {
+							const { label, reference } = item.value;
+
+							return (
+								<li>
+									<NavMenuLink href={`/${reference}`}>{label}</NavMenuLink>
+								</li>
+							);
+						}
+
+						case "menu": {
+							const { label, links } = item.value;
+
+							return (
+								<li>
+									<NavMenu>
+										<NavMenuTrigger>{label}</NavMenuTrigger>
+										<NavMenuPopover>
+											<ul role="list">
+												{links.map((link) => {
+													switch (link.discriminant) {
+														case "link": {
+															const { label, href } = link.value;
+
+															return (
+																<li>
+																	<NavMenuItem href={href}>{label}</NavMenuItem>
+																</li>
+															);
+														}
+
+														case "page": {
+															const { label, reference } = link.value;
+
+															return (
+																<li>
+																	<NavMenuItem href={`/${reference}`}>{label}</NavMenuItem>
+																</li>
+															);
+														}
+
+														case "separator": {
+															return <hr />;
+														}
+
+														default: {
+															return null;
+														}
+													}
+												})}
+											</ul>
+										</NavMenuPopover>
+									</NavMenu>
+								</li>
+							);
+						}
+
+						default: {
+							return null;
+						}
+					}
+				})}
 			</ul>
 
 			<div class="ml-auto lg:hidden">

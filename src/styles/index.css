@@ -1,3 +1,137 @@
-:root {
-	--font-body: "Inter Variable";
+@import "tailwindcss" source(none);
+
+@plugin "@tailwindcss/typography";
+
+@source "../";
+@source "../../content";
+@source "../../keystatic.config.tsx";
+
+@theme {
+	--breakpoint-xs: 30rem;
+	--breakpoint-lg: 70rem;
+	--breakpoint-3xl: 120rem;
+	--font-sans: "Inter Variable", system-ui, sans-serif;
+	--font-body: "Inter Variable", system-ui, sans-serif;
+	--font-heading: "Inter Variable", system-ui, sans-serif;
+	--radius-sm: 2px;
+	--radius-md: 4px;
+	--radius-lg: 8px;
+	--color-brand: hsl(210.3deg 65.6% 68%);
+	--color-brand-text: hsl(210.3deg 65.6% 46%);
+	--color-brand-intent: hsl(220.2deg 60.2% 32.5%);
+	--color-neutral-text: hsl(0deg 0% 28%);
+	--color-neutral-separator: hsl(0deg 0% 85%);
+	--color-border: hsl(240deg 5.88% 90%);
+	--color-focus-ring: hsl(240deg 10% 3.92%);
+}
+
+@layer base {
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		::before,
+		::after {
+			scroll-behavior: auto !important;
+			transition-duration: 0.01ms !important;
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+		}
+	}
+
+	@media (resolution >= 200dpi) {
+		:root {
+			font-size: 18px;
+		}
+	}
+
+	*,
+	::before,
+	::after,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-border);
+	}
+
+	:root {
+		overflow: hidden;
+		block-size: 100%;
+		color-scheme: light;
+		background-color: var(--color-white);
+		color: var(--color-focus-ring);
+		font-size: 16px;
+		font-synthesis: none;
+		overflow-wrap: break-word;
+		text-rendering: optimizeLegibility;
+		text-size-adjust: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	body {
+		overflow-y: auto;
+		block-size: 100%;
+	}
+
+	:focus {
+		outline: none;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-focus-ring);
+		outline-offset: 0;
+	}
+
+	a {
+		text-underline-offset: 0.15em;
+	}
+
+	blockquote,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-wrap: balance;
+	}
+
+	button:not(:disabled),
+	[role="button"]:not(:disabled) {
+		cursor: pointer;
+	}
+
+	dialog {
+		background-color: var(--color-white);
+		color: var(--color-focus-ring);
+	}
+
+	iframe {
+		border: 0;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	table {
+		font-variant-numeric: tabular-nums;
+	}
+
+	textarea {
+		min-block-size: 3lh;
+		field-sizing: content;
+	}
+
+	[id] {
+		scroll-margin-block-start: 2ex;
+	}
+}
+
+@utility prose {
+	max-width: none;
+
+	& :where(blockquote p:first-of-type)::before,
+	& :where(blockquote p:last-of-type)::after,
+	& :where(code)::before,
+	& :where(code)::after {
+		content: none;
+	}
 }

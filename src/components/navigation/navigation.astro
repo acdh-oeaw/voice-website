@@ -49,8 +49,9 @@ const { class: className, label } = Astro.props;
 
 	class NavBar extends HTMLElement {
 		connectedCallback() {
-			const root = this.querySelector<HTMLElement>("nav");
-			assert(root);
+			const rootElement = this.querySelector<HTMLElement>("nav");
+			assert(rootElement);
+			const root = rootElement;
 
 			let current: NavMenu | null = null;
 
@@ -161,7 +162,7 @@ const { class: className, label } = Astro.props;
 				if (current == null) return;
 
 				const element = event.relatedTarget as Node | null;
-				if (!root!.contains(element)) {
+				if (!root.contains(element)) {
 					closeMenu(current);
 				}
 			}

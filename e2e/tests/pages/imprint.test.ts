@@ -40,7 +40,6 @@ test.describe("imprint page", () => {
 		}
 	});
 
-	// eslint-disable-next-line playwright/no-skipped-test
 	test.skip("should not have visible changes", async ({ createImprintPage }) => {
 		for (const locale of locales) {
 			const { imprintPage } = await createImprintPage(locale);

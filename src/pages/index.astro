@@ -25,76 +25,72 @@ const { hero, main } = page;
 			<div class="absolute inset-0 size-full">
 				<div class="absolute inset-0 size-full bg-brand-intent"></div>
 			</div>
-			<div class="relative mx-auto grid w-full max-w-screen-lg gap-y-6 px-4 py-16 text-white">
+			<div class="relative mx-auto grid w-full max-w-(--breakpoint-lg) gap-y-6 px-4 py-16 text-white">
 				<h1 class="text-4xl font-medium">{hero.title}</h1>
-				<p class="max-w-[52rem] text-xl">
-					{hero.subtitle}
-				</p>
+				<p class="max-w-[52rem] text-xl">{hero.subtitle}</p>
 			</div>
 		</section>
 
 		<div class="grid gap-y-12 py-12">
-			{
-				main.sections.map((section) => {
-					switch (section.discriminant) {
-						case "cardsSection": {
-							const { title, cards, variant } = section.value;
+			{main.sections.map((section) => {
+				switch (section.discriminant) {
+					case "cardsSection": {
+						const { title, cards, variant } = section.value;
 
-							const variants = {
-								fluid: "grid-fluid-cols-80",
-								"full-width": "",
-								"two-columns": "sm:grid-cols-2",
-								"three-columns": "sm:grid-cols-3",
-								"four-columns": "sm:grid-cols-4",
-							};
+						const variants = {
+							fluid: "grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]",
+							"full-width": "",
+							"two-columns": "sm:grid-cols-2",
+							"three-columns": "sm:grid-cols-3",
+							"four-columns": "sm:grid-cols-4",
+						};
 
-							return (
-								<Section>
-									<SectionTitle>{title}</SectionTitle>
-									<ul class:list={["grid gap-8", variants[variant]]} role="list">
-										{cards.map(async (card) => {
-											switch (card.discriminant) {
-												case "custom": {
-													const { title, image, summary, link } = card.value;
+						return (
+							<Section>
+								<SectionTitle>{title}</SectionTitle>
+								<ul class:list={["grid gap-8", variants[variant]]} role="list">
+									{cards.map(async (card) => {
+										switch (card.discriminant) {
+											case "custom": {
+												const { title, image, summary, link } = card.value;
 
-													return (
-														<li>
-															<Card image={image} title={title} summary={summary} link={link} />
-														</li>
-													);
-												}
-
-												case "page": {
-													const id = card.value.reference;
-													const collectionName = getCollectionName("pages", locale);
-													const page = await reader().collections[collectionName].readOrThrow(id);
-													const { title, image, summary } = page;
-
-													const link = { href: `/${id}`, label: card.value.link.label };
-
-													return (
-														<li>
-															<Card image={image} title={title} summary={summary} link={link} />
-														</li>
-													);
-												}
-
-												default: {
-													return null;
-												}
+												return (
+													<li>
+														<Card image={image} title={title} summary={summary} link={link} />
+													</li>
+												);
 											}
-										})}
-									</ul>
-								</Section>
-							);
-						}
 
-						default: {
-							return null;
-						}
+											case "page": {
+												const id = card.value.reference;
+												const collectionName = getCollectionName("pages", locale);
+												const page = await reader().collections[collectionName].readOrThrow(id);
+												const { title, image, summary } = page;
+
+												const link = { href: `/${id}`, label: card.value.link.label };
+
+												return (
+													<li>
+														<Card image={image} title={title} summary={summary} link={link} />
+													</li>
+												);
+											}
+
+											default: {
+												return null;
+											}
+										}
+									})}
+								</ul>
+							</Section>
+						);
 					}
-				})
-			}
+
+					default: {
+						return null;
+					}
+				}
+			})}
 		</div>
 	</MainContent>
 </PageLayout>
